@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+	body
+	{
+		
+		padding: 30px;
+		padding-left: 60px;
+		background-image: url(sam2.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+  .transbox
+  {
+    background-color: rgba(70,70,255,0.3);
+    color: white;
+  }
+	div.butt
+	{
+       text-align: center;
+	}	
+	
+	table,th,td
+	{
+		border: 2px solid white;
+	}
+   
+    input
+    {
+    	cursor: pointer;
+    	border: 2px solid gray;
+    	border-radius: 10px;
+    	text-align: center;
+
+    }
+    body.bg{
+    	max-height: 100%;
+    	max-width: 100%;
+    }'
+    option
+    {
+      text-align: center;
+    }
+    input[type=submit]{background-color: darkblue; color: white; width: 20%; padding-top: 10px; padding-bottom: 10px; margin-left: 260px; text-align: center; border: none; border-radius: 5px;}
+
+</style>
+
+<script>
+	var chart;
+	var chart1;
+  var chart3;
+  var chart4;
+
+
+function validation1()
+{
+  var g = document.getElementById("input11").value;
+  var cou= 0;
+  chart3=0;
+  document.getElementById("nam").innerHTML=null;
+   for(var i =0 ; i<g.length ;i++)
+   {
+  	 if(isNaN(g[i]))
+  	 {
+  	 	cou++;
+  	 }
+     else
+     {
+      chart3++;
+      
+     }
+   }
+     if(chart3>0)
+     {
+       document.getElementById("nam").innerHTML="** Enter valid First Name**"
+     }
+  	 
+  	
+    console.log(chart3);
+  	 // if(cou==0)
+  	 // {	
+  	  // document.getElementById("input11").value=null;
+      // alert("enter valid name");
+  	 	
+  	 // }
+  }	 
+ function validation2()
+ {
+    var h= document.getElementById("input14").value;
+    var cen=0;
+    chart4=0;
+    document.getElementById("lnam").innerHTML=null;
+     for(var e=0;e<h.length;e++)
+     {
+     	if (isNaN(h[e])) 
+     	{
+     		cen++;
+
+     	}
+      else
+      {
+        chart4++;
+        
+      }
+
+     } 
+     if(chart4>0)
+      {
+        document.getElementById("lnam").innerHTML="**Enter valid Last Name**"
+      }
+      console.log(chart4);
+     // if(cen==0)
+     // {
+     	// document.getElementById("input14").value=null;
+     	// alert("enter valid last name");
+     // }  
+}
+    function mobile()
+    {
+    	chart=0;
+    	document.getElementById("message").innerHTML=null;
+    	var m= document.getElementById("input12").value;
+          
+    	if(m.length<10)
+        {
+        	
+    		document.getElementById("message").innerHTML="**mobile no. should be of 10 digits **"
+    		// document.getElementById("input12").value=null;
+    		chart++;
+    	}
+    	if(m.length>10)
+    	{  
+    	
+    		document.getElementById("message").innerHTML="**mobile no. should be of 10 digits **"
+    		// document.getElementById("input12").value=null;
+    		chart++;
+    	}
+    	if((m.charAt(0)!=6) && (m.charAt(0)!=7) && (m.charAt(0)!=8) && (m.charAt(0)!=9))
+    	{
+    	
+    		document.getElementById("message").innerHTML="**enter a valid no.**"
+    		chart++;
+    		// document.getElementById("input12").value=null;
+    	}
+    }    
+    function myEmail()
+    {
+    	  chart1=0;
+    	document.getElementById("mess").innerHTML=null;
+    	var w= document.getElementById("input13").value
+
+    	if (w.charAt(0)=="@")
+    	 {
+    	 	
+    	 	document.getElementById("mess").innerHTML="**enter valid Email**"
+    	 	// document.getElementById("input13").value=null;
+    	 	chart1++;
+
+    	 }
+    	 if((w.charAt(w.length-4)!=".")&&(w.charAt(w.length-3)!="."))
+    	 {
+    	 	
+    	 	document.getElementById("mess").innerHTML="** enter valid Email**"
+    	 	// document.getElementById("input13").value=null;
+    	 	chart1++;
+    	 }
+    }
+	function update()
+	{
+	 	var BTech=["ECE","IT","ME","CE"];
+	 	var MTech = ["CSE","CE","IT","EN","ME"];
+	 	var Bpharma = ["pharma"];
+	 	var MCA = ["computerapplication"];
+	 	var MBA = ["bussiness","informational","Techniqual"];
+
+        var course = document.getElementById('demo');
+        var Branch = document.getElementById('pemo');
+        console.log(course);
+        console.log(Branch);
+     
+        
+         var l=Branch.options.length;
+ 	     for (var k =0 ; k<l ; k++)
+	     {
+	 	  Branch.options[1]=null;
+ 	     }
+         if (document.getElementById("A").selected) 
+         {
+        	for( var i=0; i < BTech.length;i++)
+        	{
+        		var opt1= document.createElement('option');
+        		opt1.innerHTML = BTech[i];
+        		opt1.value = BTech[i];
+        		Branch.appendChild(opt1);
+        	}
+         }
+         else if(document.getElementById("B").selected)
+         {
+        	for( var j=0; j < MTech.length;j++)
+        	{
+        		var opt2 = document.createElement('option');
+        		opt2.innerHTML= MTech[j];
+        		opt2.value= MTech[j];
+        		Branch.appendChild(opt2);
+        	}
+        }
+        else if(document.getElementById("C").selected)
+        {
+        	for( var k=0; k<Bpharma.length;k++)
+        	{
+         		var opt3 = document.createElement('option');
+        		opt3.innerHTML= Bpharma[k];
+        		opt3.value= Bpharma[k];
+        		Branch.appendChild(opt3);
+        	}
+        }
+         else if(document.getElementById("D").selected)
+        {
+        	for( var l=0; l<MCA.length;l++)
+        	{
+        		var opt4 = document.createElement('option');
+        		opt4.innerHTML= MCA[l];
+        		opt4.value= MCA[l];
+        		Branch.appendChild(opt4);
+        	}
+        }
+         else if(document.getElementById("E").selected)
+        {
+        	for( var n=0; n<MBA.length;n++)
+        	{
+        		var opt5 = document.createElement('option');
+        		opt5.innerHTML= MBA[n];
+        		opt5.value= MBA[n];
+        		Branch.appendChild(opt5);
+        	}
+        }
+        else
+        	var t=0;
+	 }
+	 function showinput()
+	  { 
+
+	  	document.getElementById("display1").innerHTML=document.getElementById("input11").value+" "+document.getElementById("input14").value; 	
+	 	document.getElementById("display4").innerHTML=document.getElementById("input12").value;
+	 	document.getElementById("display2").innerHTML=document.getElementById("demo").value;
+	 	document.getElementById("display3").innerHTML=document.getElementById("pemo").value;
+        document.getElementById("display5").innerHTML=document.getElementById("input13").value;
+	 	document.getElementById("display6").innerHTML=document.getElementById("input15").value;
+	 	if( document.getElementById("a").checked)
+	 	 {
+           document.getElementById("display7").innerHTML="Male";
+	 	 }
+	 	 else if( document.getElementById("b").checked)
+	 	 {
+           document.getElementById("display7").innerHTML="Female";
+	 	 }
+	 	 else if( document.getElementById("c").checked)
+	 	 {
+           document.getElementById("display7").innerHTML="Others";
+	 	 }
+	 	}
+	 	 function mydis(text)
+	 	 {
+	 	 	var o1=document.getElementById("input11").value;
+	 	 	var o2=document.getElementById("input14").value;
+	 	 	var o3=document.getElementById("input15").value;
+	 	 	var o4=document.getElementById("input12").value;
+	 	 	var o5=document.getElementById("input13").value;
+	 	 	var o6=document.getElementById("demo").value;
+	 	 	var o7=document.getElementById("pemo").value;
+	 	 	if((o1=="")||(o2=="")||(o3=="")||(o4=="")||(o5=="")||(o6=="")||(o7=="")||(chart!=0)||(chart1!=0)||(chart3!=0)||(chart4!=0))
+	 	 	 {
+	 	 		document.getElementById("sub").disabled= true;
+	 	 	 }
+	 	 	else
+	 	 	 {
+	 	 		document.getElementById("sub").disabled= false;
+	 	 	 }
+
+           console.log(chart3);
+	 	 }
+
+
+	 	 function mytb()
+	 	 {
+      var o1=document.getElementById("input11").value;
+      var o2=document.getElementById("input14").value;
+      var o3=document.getElementById("input15").value;
+      var o4=document.getElementById("input12").value;
+      var o5=document.getElementById("input13").value;
+      var o6=document.getElementById("demo").value;
+      var o7=document.getElementById("pemo").value;
+      if((o1=="")||(o2=="")||(o3=="")||(o4=="")||(o5=="")||(o6=="")||(o7=="")||(chart!=0)||(chart1!=0)||(chart3!=0)||(chart4!=0))
+       {
+
+	 	 	  document.getElementById("tbl").style.display="none";
+       }
+       else
+       {
+        document.getElementById("tbl").style.display="block";
+
+       }
+     }
+     function mytbh()
+     {
+      var o1=document.getElementById("input11").value;
+      var o2=document.getElementById("input14").value;
+      var o3=document.getElementById("input15").value;
+      var o4=document.getElementById("input12").value;
+      var o5=document.getElementById("input13").value;
+      var o6=document.getElementById("demo").value;
+      var o7=document.getElementById("pemo").value;
+      if((o1=="")||(o2=="")||(o3=="")||(o4=="")||(o5=="")||(o6=="")||(o7=="")||(chart!=0)||(chart1!=0)||(chart3!=0)||(chart4!=0))
+       {
+
+        document.getElementById("tbl").style.display="none";
+       }
+     }
+	 
+	 
+</script>
+</head>
+<body class="bg" >
+  <div class="transbox" style="margin-left: 15px; margin-right: 35px; ">
+	<div class="jumbotron" style="margin:auto; width: 1000px; height: 300px;">
+    <div class="container">
+      <div class="row">
+		<div class="col-sm-2"><img src="main2.jpg" style="width: 100px; "></div>
+		<div class="col-sm-10"><h2 style=" margin-bottom: ; text-align:center; color: darkblue; font-family:'Times New Roman',Times , serif;"> <U>KIET GROUP OF INSTITUTIONS</U></h2>
+		<h5 style="text-align:center; color: darkblue;">GHAZIABAD U.P.(201206)</h5>
+  </div>
+</div>
+   <div class="butt"><button style=" text-align: center; background-color: blue; border-radius: 5px; color: white; border:2px solid ; padding: 10px,30px; "><h4>SIGN UP</h4></button></div></div>
+	</div>	
+	<div  name="myform"  style=" border-radius: 5px;  margin-left: 200px; margin-right: 200px; padding: 40px;">
+		<h3 style="font-family: serif;"><b>Personal Detail</b></h3>
+        <hr>
+		<div class= "container">
+
+		    <div class="row">
+		    	<div class="col-sm"><b>First Name :</b><br><input style="width: 300px;height: 50px" type="text" name="firstname" placeholder="First name" id="input11" onchange="validation1(); mydis(); mytbh();"  required><span style="color: red;" id="nam"><em></em></span></div>
+	      		<div class="col-sm"><b>Last name :</b><br><input style="width:300px;height: 50px;" type="text" name="lastname" placeholder="Last name" id="input14" onchange="validation2(); mydis(); mytbh();" required><span style="color: red;" id="lnam"><em></em></span></div>
+	     	</div> 
+	     	<br><br>
+		 	<div class="row">
+		 		<div class="col-sm"><b>DOB :</b><input style="width: 250px;height: 50px;" type="date" name="DOB" id="input15" onchange="mydis();" required></div>
+		  		<div class="col-sm" ><b>Gender :</b>
+		  			<input type="radio" name="gender" value="Male" id="a" >Male
+		  			<input type="radio" name="gender" value="Female" id="b" >Female
+		  			<input type="radio" name="gender" value="Others" id="c" >Others
+	      		<div>
+	    	</div>
+	    </div>
+	    <br><br><br>
+
+	  	<div class="container"> 
+	    	<div class="row">
+		  		<div class="col-sm"><b>Moblie no :</b><br><input style="width: 300px;height: 50px;" type="number" name="mobile no"  id="input12" placeholder="Mobile no." onchange="mobile(); mydis(); mytbh();" required><span id="message" style="color: red;"></span><em></em></div>	
+				<div class="col-sm"><b>E-mail :</b><br><input style="width: 300px;height: 50px;" type="Email" name="email" id="input13" placeholder="Email" onchange="myEmail(); mydis(); mytbh();" required><span id="mess" style="color: red;"><em></em></span></div>
+	     	</div>
+	     	<br><br>	    
+	     	<div class="row">
+		  		<div class="col-sm"><b>Courses :</b><br>
+		    		<select style="width: 300px;height: 50px; border-radius: 10px; text-align: center;" name="course" id="demo" onchange="update(); mydis();">
+			 		<option value=""selected disabled hidden >--select--</option>
+			 		<option value="BTech" id="A">BTech</option>
+			 		<option value="MTech" id="B">MTech</option>
+			 		<option value="Bpharma" id="C">Bpharma</option>
+			 		<option value="MBA" id="D">MBA</option>
+			 		<option value="MCA" id="E">MCA</option>
+		    		</select>
+		    	</div>
+                <div class="col-sm"><b>Branch :</b> <br>
+                	<select style="width: 300px;height: 50px; border-radius: 10px;" name="Branch" id="pemo" onchange="mydis();">
+                	<option value=""selected disabled hidden>--select--</option>   		
+                	</select>
+	      		</div>
+	    	</div>
+	    	<br><br><br>		
+			<div class="row">
+	      		<div class="col-sm"><input type="submit"  name="submit" value="submit" id="sub"  onclick=" showinput(); mytb(); mydis();" >
+	      		</div>
+	     	</div>
+	    </div> 
+    </div></div><br>
+    <hr>
+    <div  id="tbl" style="display: none;">
+    <table width="100%"  style="text-align: center;color: white; ">
+    	
+    	<tr>
+    		<th>Name</th>
+    		<td id="display1"></td>
+    	</tr>
+        <tr>
+    		<th>D.O.B</th>
+    		<td id="display6"></td>
+    	</tr>
+        <tr>
+        	<th>Gender</th>
+        	<td id="display7"></td>
+        </tr>
+    	<tr>
+    		<th>Mobile.no</th>
+    		<td id="display4"></td>
+    	</tr>
+    	<tr>
+        	<th>Email</th>
+        	<td id="display5"></td>
+        </tr>    	
+    	<tr>
+    		<th>course</th>
+    		<td id="display2"></td>
+    	</tr>
+    	<tr>
+    		<th>Branch</th>
+    		<td id="display3"></td>
+    	</tr>
+    </table> 
+</div>
+</div>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<style type="text/css">
+	body
+	{
+      background-image: url(music.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+	}
+	li a:hover {
+  background-color: black;
+  color: white;
+    }
+    input.ex1:hover{
+    	background-color: #f30000 !important;
+    }
+
+	input
+	{
+		background-color: lightgray;
+		border-radius:5px;
+		text-align: center;
+	}
+</style>
+<script type="text/javascript">
+	function myfun()
+	{
+		var a=document.getElementById("name").value;
+		var b=document.getElementById("pass").value;
+		if((a=="")||(b==""))
+		{
+			document.getElementById("sub").disabled= true;
+
+		}
+		else
+		{
+			document.getElementById("sub").disabled= false;
+		}
+	}
+</script>
+
+</head>
+
+
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+		<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+		<span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="collapse_target">
+		<a class="navbar-brand"><img src="mar.png" style="width: 60px;height: 60px;"></a>
+		<span class="navbar-text"></span>
+		<u1 class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="project.html">Home</a>		
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">what is skull?</a>		
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Explore</a>		
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Contact_us</a>		
+			</li>
+		</u1>
+		</div>
+	</nav>
+	<div style="background-color: rgba(192,192,192,0.2);padding: 100px; padding-right: 300px; margin-left: 300px; margin-right: 850px; margin-top: 70px;" >
+		<div class="container">
+			<div class="row">
+				<div class="row">
+	<form>
+		<h2 style="color: white;font-family: serif;text-align: center;margin-left: 0px;"><strong>Login</strong></h2><br>
+
+		<input type="text" name="Username" placeholder="Username" id="name" onchange="myfun();"><br><br>
+		<input type="password" name="password" placeholder="password" id="pass" onchange="myfun();"><br><br>
+		<div><input type="submit" class="ex1" name="submit" id="sub" onclick="myfun();" style="background-color: #b30000; border-color: #b30000; color: white; margin-left: 30px; padding: 7px; padding-left: 10px; padding-right: 10px;width: 150px;"></div>
+	</form>
+</div>
+</div>
+</div>
+</div>
+</body>

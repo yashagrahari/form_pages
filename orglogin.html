@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+<style type="text/css">
+	li a:hover {
+  background-color: #b34700;
+  color: white;
+           }
+           button.ae:hover{
+           	background-color: #b34700 !important;
+           	color: white !important;
+           }
+
+	input
+	{
+
+       border-radius:5px;
+       text-align: center;
+       font-family: serif;
+       margin-left: 25px; 
+      /* border: 2px solid orange*/;
+       background-color: #e6e6e6;
+
+	}
+	body
+	{
+		background-color: #ff6600;
+		background-image: linear-gradient(to right ,#ff6600,#ffe0cc);
+	}
+	div.frm
+	{
+       /*background-image: url("hel2.jpg");*/
+       background-repeat: no-repeat;
+       background-size: cover;
+	}
+	input[type=submit].form-control:hover 
+	{
+	background-color:#b34700  !important;
+	}
+	input[type=button].form-control:hover 
+	{
+	background-color:#b34700  !important;
+	}
+	input[type=text]
+	{
+		width: 200px;
+	}
+	input[type=number]
+	{
+		width: 200px;
+	}
+	input[type=email]
+	{
+		width: 200px;
+	}
+	input[type=password]
+	{
+		width: 200px;
+	}
+	@media screen and (max-width: 768px)
+	{
+	 body{
+	 	background-color: #ff8533;
+	 	background-image: linear-gradient( to right,#ff8533,#ff8533);
+	 }
+	}
+	@media only screen and (max-width: 768px)
+	{
+		#res{
+			max-width: 300px;
+			 max-height: 150px; 
+		}
+
+	}
+
+</style>
+<script type="text/javascript">
+	var chart1;
+	var chart2;
+	var chart3;
+	var chart4;
+	var chart5;
+	var chart6;
+	function sname()
+	{
+		document.getElementById("mess1").innerHTML=null;
+		var A = document.getElementById("input11").value
+		var cou=0;
+		chart1=0;
+		for(var i=0; i<A.length ; i++)
+		{
+			if(isNaN(A[i]))
+			{
+				cou++;
+			}
+			else
+			{
+				chart1++;
+			}
+		}
+        if(chart1>0)
+        {
+        	document.getElementById("mess1").innerHTML="**please enter a valid name**"
+        }
+        console.log(chart1);
+	}
+	function fname()
+	{
+		document.getElementById("mess2").innerHTML=null
+		var B = document.getElementById("input12").value
+		var cou1=0;
+		chart2=0;
+		for (var j=0;j<B.length ; j++)
+		{
+			if(isNaN(B[j]))
+			{
+				cou1++;
+			}
+			else
+			{
+				chart2++;
+			}
+			if(chart2>0)
+			{
+				document.getElementById("mess2").innerHTML="**please enter a valid name**"
+			}
+		}
+	}
+	function mob1()
+	{
+		document.getElementById("mess3").innerHTML=null
+		var C=document.getElementById("input13").value
+		chart3=0;
+		if(C.length<10)
+        {
+        	
+    		document.getElementById("mess3").innerHTML="**mobile no. should be of 10 digits **"
+    		// document.getElementById("input12").value=null;
+    		chart3++;
+    	}
+    	if(C.length>10)
+    	{  
+    	
+    		document.getElementById("mess3").innerHTML="**mobile no. should be of 10 digits **"
+    		// document.getElementById("input12").value=null;
+    		chart3++;
+    	}
+    	if((C.charAt(0)!=6) && (C.charAt(0)!=7) && (C.charAt(0)!=8) && (C.charAt(0)!=9))
+    	{
+    	
+    		document.getElementById("mess3").innerHTML="**enter a valid no.**"
+    		chart3++;
+        }
+	}
+	function mob2()
+	{
+       document.getElementById("mess4").innerHTML=null
+		var D=document.getElementById("input14").value
+		chart4=0;
+		if(D.length<10)
+        {
+        	
+    		document.getElementById("mess4").innerHTML="**mobile no. should be of 10 digits **"
+    		// document.getElementById("input12").value=null;
+    		chart4++;
+    	}
+    	if(D.length>10)
+    	{  
+    	
+    		document.getElementById("mess4").innerHTML="**mobile no. should be of 10 digits **"
+    		// document.getElementById("input12").value=null;
+    		chart4++;
+    	}
+    	if((D.charAt(0)!=6) && (D.charAt(0)!=7) && (D.charAt(0)!=8) && (D.charAt(0)!=9))
+    	{
+    	
+    		document.getElementById("mess4").innerHTML="**enter a valid no.**"
+    		chart4++;
+        }
+	}
+	function myEmail()
+    {
+    	  chart5=0;
+    	document.getElementById("mess5").innerHTML=null;
+    	var w= document.getElementById("input15").value
+
+    	if (w.charAt(0)=="@")
+    	 {
+    	 	
+    	 	document.getElementById("mess5").innerHTML="**enter valid Email**"
+    	 	// document.getElementById("input13").value=null;
+    	 	chart5++;
+
+    	 }
+    	 if((w.charAt(w.length-4)!=".")&&(w.charAt(w.length-3)!="."))
+    	 {
+    	 	
+    	 	document.getElementById("mess5").innerHTML="** enter valid Email**"
+    	 	// document.getElementById("input13").value=null;
+    	 	chart5++; 	
+    	 }
+    	 for(var n=0;n<w.length;n++)
+    	 {
+    	 	if((w.charAt(w.length-7)!="@")&&(w.charAt(w.length-8)!="@")&&(w.charAt(w.length-9)!="@")&&(w.charAt(w.length-10)!="@")&&(w.charAt(w.length-11)!="@")&&(w.charAt(w.length-12)!="@"))
+    	 	{
+    	 		document.getElementById("mess5").innerHTML="**please insert a valid email**"
+    	 		chart5++;
+    	 	}
+    	 }
+    }
+    function pass()
+    {
+    	chart6=0;
+    	document.getElementById("mess6").innerHTML=null;
+    	var l=document.getElementById("input16").value;
+    	var j=document.getElementById("input17").value;
+    	if(l!=j)
+    	{
+    		chart6++;
+    		document.getElementById("mess6").innerHTML="**Password does not match**";
+    	}
+    	console.log(chart6);
+
+
+    }
+
+    function mydis()
+    {
+    	var o1=document.getElementById("input11").value;
+        var o2=document.getElementById("input12").value;
+        var o3=document.getElementById("input13").value;
+        var o4=document.getElementById("input14").value;
+        var o5=document.getElementById("input15").value;
+        var o6=document.getElementById("input16").value;
+        var o7=document.getElementById("input17").value;
+    	if((o1=="")||(o2=="")||(o3=="")||(o4=="")||(o5=="")||(o6=="")||(o7=="")||(chart1!=0)||(chart2!=0)||(chart3!=0)||(chart4!=0)||(chart5!=0)||(chart6!=0))
+    	{
+    		document.getElementById("sub").disabled= true;
+    	}
+    	else
+    	{
+    		document.getElementById("sub").disabled= false;
+    	}
+    }
+     function fun()
+     {
+     	location.replace("prplogin.html")
+
+     }
+
+
+		
+	</script>
+</head>
+<body>
+	
+	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #ff6600;">
+		<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+		<span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="collapse_target">
+		<a class="navbar-brand"><img src="mar.png" style="width: 60px;height: 60px;"></a>
+		<span class="navbar-text"></span>
+		<u1 class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="#">Home</a>		
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">what is skull?</a>		
+			</li>
+			
+			<li class="nav-item">
+				<a class="nav-link" href="#">Contact_us</a>		
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Feedback</a>		
+			</li>
+
+		</u1>
+		<form class="sea">
+			<input style="border: 2px solid white; background-color: white; background-image: line-gradient(to right,#0d0d0d,#e6e6e6);"  type="search" placeholder="Search...">
+			<button class="ae" style="background-color: #ff751a; color: white; border-radius: 5px; border-color: #cc5200;" >search</button>
+		</form>
+		</div>
+	</nav>
+
+Z	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm">
+				<img src="my2.png" id="res" style="width: 500px;height: 350px;  margin-top: 120px;"></div>
+			<div class="col-sm">
+				
+				<div class="frm" >
+					
+<form   style="margin-left: 30px;margin-right: 20px;">
+
+	<div class="container" >
+		<div class="row">
+			<div class="col-sm jumbotron" style="background-color: #ffa366; background-image: linear-gradient(to right,#ffa366,#ffe0cc); color:white; text-align: center; width: 400px; height: 100px;">
+				<h2 style="font-family: serif; text-shadow: 2px 2px black;"><strong>Sign Up</strong></h2>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm"><input type="text" class="form-control" name="First Name" placeholder="First Name" id="input11" onchange="sname(); mydis();"><span style="color: red;" id="mess1"></span></div>
+			<div class="col-sm"><input type="text" name="Father Name" class="form-control" placeholder="Father Name" id="input12" onchange="fname(); mydis();"><span style="color: red;" id="mess2"></span></div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-sm"><input type="number" name="mobile" class="form-control" placeholder="Mobile No." id="input13" onchange="mob1(); mydis();"><span id="mess3" style="color: red;" ></span></div>
+			<div class="col-sm"><input type="number" name="mobile" class="form-control" placeholder="Father Mobile No." id="input14" onchange="mob2(); mydis();"><span id="mess4" style="color: red;"></span></div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-sm"><input type="Email" class="form-control" name="Email" placeholder="Email" id="input15" onchange="myEmail(); mydis();"><span id="mess5" style="color: red;"></span></div>
+			<div class="col-sm" ><b>Gender:</b>
+				<input type="radio" name="Gender" value="Male">Male
+				<input type="radio" name="Gender" value="Female">Female
+			</div>
+		</div>
+		<br><br>
+		<div class="row">
+			<div class="col-sm"><input type="Password" name="Password" class="form-control" placeholder="Password" id="input16"></div>
+			<div class="col-sm"><input type="Password" name="Password" class="form-control" placeholder="Confrim Password" id="input17" onchange="pass(); mydis();"><span id="mess6" style="color: red;"></span></div>	
+		</div>	
+		<br><br>
+		<div class="row" >
+			<div class="col-sm"><input type="submit" name="submit" value="Create Account" id="sub" style="width :200px;height: 40px; color: white; background-color: #cc5200;" onsubmit="mydis();" class="form-control"></div>
+			<div class="col-sm"><input type="button" name="login" value="Login" onclick="fun();" style="width :200px;height: 40px; color: white; background-color: #cc5200;" class="form-control"></div>
+		</div>			
+	</div>
+
+</form>
+<br><br><br>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
