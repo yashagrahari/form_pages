@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -217,8 +218,9 @@
     }
     function pass()
     {
-    	chart6=0;
+    	
     	document.getElementById("mess6").innerHTML=null;
+    	chart6=0;
     	var l=document.getElementById("input16").value;
     	var j=document.getElementById("input17").value;
     	if(l!=j)
@@ -258,8 +260,88 @@
 
 		
 	</script>
+	 <script type="text/javascript">
+
+var app = angular.module('postserviceApp', []);
+
+app.controller('postserviceCtrl', function ($scope, $http) {
+
+$scope.Fname = null;
+
+
+$scope.Fa_name = null;
+
+$scope.Mobile_no = null;
+
+$scope.Fa_Mobile_no = null;
+
+$scope.Email = null;
+
+$scope.Gender = null;
+
+$scope.Password = null;
+
+$scope.lblMsg = null;
+
+$scope.postdata = function (Fname,Fa_name,Mobile_no,Fa_Mobile_no,Email,Gender,Password) {
+
+var data = {
+
+Fname: $scope.Fname,
+
+Fa_name: $scope.Fa_name,
+
+Mobile_no: $scope.Mobile_no,
+
+Fa_Mobile_no: $scope.Fa_Mobile_no,
+
+Email: $scope.Email,
+
+Gender: $scope.Gender,
+
+Password: $scope.Password
+};
+
+//Call the services
+
+$http.post('http://10.21.66.154:8000/data/', JSON.stringify(data)).then(function (response) {
+
+if (response.data)
+	console.log(response);
+
+$scope.msg = "Post Data Submitted Successfully!";
+$scope.statusval = response.status;
+
+$scope.statustext = response.statusText;
+
+$scope.res = data;
+console.log($scope.res);
+
+$scope.headers = response.headers();
+
+// var obj = JSON.parse(response.data);
+
+// document.getElementById("mini").innerHTML= obj;
+
+}, function (response) {
+
+$scope.msg = "Service not Exists";
+
+$scope.statusval = response.status;
+
+
+
+$scope.headers = response.headers();
+
+});
+
+};
+
+});
+
+</script>
 </head>
-<body>
+<body ng-app="postserviceApp" ng-controller="postserviceCtrl">
 	
 	<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #ff6600;">
 		<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
@@ -291,7 +373,7 @@
 		</div>
 	</nav>
 
-Z	<div class="container-fluid">
+ <div class="container-fluid">
 		<div class="row">
 			<div class="col-sm">
 				<img src="my2.png" id="res" style="width: 500px;height: 350px;  margin-top: 120px;"></div>
@@ -309,31 +391,31 @@ Z	<div class="container-fluid">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm"><input type="text" class="form-control" name="First Name" placeholder="First Name" id="input11" onchange="sname(); mydis();"><span style="color: red;" id="mess1"></span></div>
-			<div class="col-sm"><input type="text" name="Father Name" class="form-control" placeholder="Father Name" id="input12" onchange="fname(); mydis();"><span style="color: red;" id="mess2"></span></div>
+			<div class="col-sm"><input type="text" class="form-control" ng-model="Fname" placeholder="First Name" id="input11" onchange="sname(); mydis();"><span style="color: red;" id="mess1"></span></div>
+			<div class="col-sm"><input type="text" ng-model="Fa_name" class="form-control" placeholder="Father Name" id="input12" onchange="fname(); mydis();"><span style="color: red;" id="mess2"></span></div>
 		</div>
 		<br><br>
 		<div class="row">
-			<div class="col-sm"><input type="number" name="mobile" class="form-control" placeholder="Mobile No." id="input13" onchange="mob1(); mydis();"><span id="mess3" style="color: red;" ></span></div>
-			<div class="col-sm"><input type="number" name="mobile" class="form-control" placeholder="Father Mobile No." id="input14" onchange="mob2(); mydis();"><span id="mess4" style="color: red;"></span></div>
+			<div class="col-sm"><input type="number" ng-model="Mobile_no" class="form-control" placeholder="Mobile No." id="input13" onchange="mob1(); mydis();"><span id="mess3" style="color: red;" ></span></div>
+			<div class="col-sm"><input type="number" ng-model="Fa_Mobile_no" class="form-control" placeholder="Father Mobile No." id="input14" onchange="mob2(); mydis();"><span id="mess4" style="color: red;"></span></div>
 		</div>
 		<br><br>
 		<div class="row">
-			<div class="col-sm"><input type="Email" class="form-control" name="Email" placeholder="Email" id="input15" onchange="myEmail(); mydis();"><span id="mess5" style="color: red;"></span></div>
+			<div class="col-sm"><input type="Email" class="form-control" ng-model="Email" placeholder="Email" id="input15" onchange="myEmail(); mydis();"><span id="mess5" style="color: red;"></span></div>
 			<div class="col-sm" ><b>Gender:</b>
-				<input type="radio" name="Gender" value="Male">Male
-				<input type="radio" name="Gender" value="Female">Female
+				<input type="radio" ng-model="Gender" value="Male">Male
+				<input type="radio" ng-model="Gender" value="Female">Female
 			</div>
 		</div>
 		<br><br>
 		<div class="row">
-			<div class="col-sm"><input type="Password" name="Password" class="form-control" placeholder="Password" id="input16"></div>
+			<div class="col-sm"><input type="Password" ng-model="Password" class="form-control" placeholder="Password" id="input16" onchange="pass(); mydis();"></div>
 			<div class="col-sm"><input type="Password" name="Password" class="form-control" placeholder="Confrim Password" id="input17" onchange="pass(); mydis();"><span id="mess6" style="color: red;"></span></div>	
 		</div>	
 		<br><br>
 		<div class="row" >
-			<div class="col-sm"><input type="submit" name="submit" value="Create Account" id="sub" style="width :200px;height: 40px; color: white; background-color: #cc5200;" onsubmit="mydis();" class="form-control"></div>
-			<div class="col-sm"><input type="button" name="login" value="Login" onclick="fun();" style="width :200px;height: 40px; color: white; background-color: #cc5200;" class="form-control"></div>
+			<div class="col-sm"><input type="submit" name="submit" value="send" id="sub" style="width :200px;height: 40px; color: white; background-color: #cc5200;" ng-click="postdata(Fname,Fa_name,Mobile_no,Fa_Mobile_no,Email,Gender,Password)" onsubmit="mydis();"  class="form-control"></div>
+			<div class="col-sm"><input type="button" name="login" value="Login" onclick="fun();"  style="width :200px;height: 40px; color: white; background-color: #cc5200;" class="form-control"></div>
 		</div>			
 	</div>
 
@@ -344,5 +426,20 @@ Z	<div class="container-fluid">
 </div>
 </div>
 
+</div>
+
+<p>Output Message : {{msg}}</p>
+
+<p>StatusCode: {{statusval}}</p>
+
+<p>Status: {{res}}</p>
+
+<p>Response Headers: {{headers}}</p>
+<table style="border: 1px solid black; text-align: center;"><th>{{res.Fname}}</th><th>{{res.Fa_name}}</th></table>
+</div>
+
+    
+
+   
 </body>
 </html>
