@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>
+
+AngularJs $http.post() Service Response Example
+
+</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script type="text/javascript">
+
+var app = angular.module('postserviceApp', []);
+
+app.controller('postserviceCtrl', function ($scope, $http) {
+
+$scope.Fname = null;
+
+$scope.Fname = null;
+
+$scope.Fa_name = null;
+
+$scope.Mobile_no = null;
+
+$scope.Fa_Mobile_no = null;
+
+$scope.Email = null;
+
+$scope.Gender = null;
+
+$scope.Password = null;
+
+$scope.lblMsg = null;
+
+$scope.postdata = function (Fname,Fa_name,Mobile_no,Fa_Mobile_no,Email,Gender,Password) {
+
+var data = {
+
+Fname: $scope.Fname,
+
+Fa_name: $scope.Fa_name,
+
+Mobile_no: $scope.Mobile_no,
+
+Fa_Mobile_no: $scope.Fa_Mobile_no,
+
+Email: $scope.Email,
+
+Gender: $scope.Gender,
+
+Password: $scope.Password
+};
+
+//Call the services
+
+$http.post('http://10.21.66.154:8000/data/', JSON.stringify(data)).then(function (response) {
+
+if (response.data)
+
+$scope.msg = "Post Data Submitted Successfully!";
+
+}, function (response) {
+
+$scope.msg = "Service not Exists";
+
+$scope.statusval = response.status;
+
+$scope.statustext = response.statusText;
+
+$scope.headers = response.headers();
+
+});
+
+};
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
+
+<div>
+
+First Name : <input ng-model="Fname" ><br/><br/>
+Father Name : <input ng-model="Fa_name" /><br/><br/>
+mobile : <input ng-model="Mobile_no" ><br/><br/>
+father mobile : <input ng-model="Fa_Mobile_no" /><br/><br/>
+EMAIL : <input ng-model="Email" ><br/><br/>
+gender :<input ng-model="Gender" ><br/><br/>
+password :<input ng-model="Password" /><br/><br/>
+
+
+
+
+<input type="button" value="Send" ng-click="postdata(Fname,Fa_name,Mobile_no,Fa_Mobile_no,Email,Gender,Password)" /> <br/><br/>
+
+</div>
+
+<p>Output Message : {{msg}}</p>
+
+<p>StatusCode: {{statusval}}</p>
+
+<p>Status: {{statustext}}</p>
+
+<p>Response Headers: {{headers}}</p>
+
+</div>
+
+</body>
+
+</html>
