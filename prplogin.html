@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head >
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -57,12 +58,51 @@
 	}
 
 </script>
+<script type="text/javascript">
+  	var app= angular.module('getdata',[]);
+  	app.controller('getcontroller',function($scope,$http){
+    $scope.email=null;
+    $scope.password=null;
+
+
+    $scope.getdata = function(email,password){
+      var data ={
+      	email: $scope.email,
+      	password: $scope.password
+      	
+      	 // params : {email:"$scope.email",password:"$scope.password"}
+      };
+       var config ={
+       	params: data
+
+       };
+
+      $http.get("http://10.21.67.187:8000/data/", config).then(function(response){
+       $scope.msg = "GET data successfully";
+       $scope.res = response.data;
+       $scope.statustext = response.statusText;
+       $scope.status = response.status;
+       $scope.headers = response.headers();  
+      },function(response){
+      	$scope.msg = "error";
+      	 $scope.res = response.data;
+       $scope.statustext = response.statusText;
+       $scope.status = response.status;
+       $scope.headers = response.headers(); 
+      });
+
+
+    };
+
+
+  	});
+</script>
 
 </head>
 
 
 
-<body >
+<body ng-app="getdata" ng-controller="getcontroller">
 <nav class="navbar navbar-expand-md navbar-dark " style="background-color: #4d004d;">
 		<button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
 		<span class="navbar-toggler-icon"></span>
@@ -94,12 +134,26 @@
 		<div class="container">
 		<div class="d-flex justify-content-center"><div class="pg-4"><h2 style="color: white;font-family: serif;text-align: center;margin-left: 0px; padding-top: 30px;"><strong>Login</strong></h2></div></div><br>
 
-		<div class="d-flex justify-content-center"> <div class="pg-2"><input type="text" name="Username" class="form-control" placeholder="Username" id="name" onchange="myfun();"></div></div><br><br>
-		<div class="d-flex justify-content-center"><div class="pg-2"><input type="password" name="password" class="form-control" placeholder="password" id="pass" onchange="myfun();"></div></div><br><br>
-		<div class="d-flex justify-content-center"><div class="pg-2"><input type="submit" class="ex1" name="submit" id="sub" onclick="myfun();" style="background-color: #4d004d; border-color: #4d004d; color: white;  padding: 7px; padding-left: 10px; padding-right: 10px;width: 150px;"></div></div></div>
+		<div class="d-flex justify-content-center"> <div class="pg-2"><input type="text" ng-model="email" class="form-control" placeholder="Username" id="name" onchange="myfun();"></div></div><br><br>
+		<div class="d-flex justify-content-center"><div class="pg-2"><input type="password" ng-model="password" class="form-control" placeholder="password" id="pass" onchange="myfun();"></div></div><br><br>
+		<div class="d-flex justify-content-center"><div class="pg-2"><input type="submit" class="ex1" name="submit" id="sub" ng-click="getdata(email,password)"  style="background-color: #4d004d; border-color: #4d004d; color: white;  padding: 7px; padding-left: 10px; padding-right: 10px;width: 150px;"></div></div></div>
 	</form>
 </div>
+  
+  <div>
+ message :	{{msg}}
+ status  :  {{status}}
+ statustext : {{statustext}}
+ <a href="sample.html">data : {{res}}  </a>
+   
 
+
+  </div>
+
+
+
+
+ 
 
 
 </body>

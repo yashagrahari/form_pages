@@ -305,34 +305,34 @@ Password: $scope.Password
 
 //Call the services
 
-$http.post('http://10.21.66.154:8000/data/', JSON.stringify(data)).then(function (response) {
+$http.post('http://10.21.66.154:8000/data/', JSON.stringify(data)).then(function (resp) {
 
-if (response.data)
-	console.log(response);
+
+	console.log(resp);
 
 $scope.msg = "Post Data Submitted Successfully!";
-$scope.statusval = response.status;
+$scope.statusval = resp.status;
 
-$scope.statustext = response.statusText;
+$scope.statustext = resp.statusText;
 
-$scope.res = data;
+$scope.res = resp.data;
 console.log($scope.res);
 
-$scope.headers = response.headers();
+$scope.headers = resp.headers();
 
 // var obj = JSON.parse(response.data);
 
 // document.getElementById("mini").innerHTML= obj;
 
-}, function (response) {
+}, function (resp) {
 
 $scope.msg = "Service not Exists";
 
-$scope.statusval = response.status;
+$scope.statusval = resp.status;
 
 
 
-$scope.headers = response.headers();
+$scope.headers = resp.headers();
 
 });
 
@@ -436,7 +436,7 @@ $scope.headers = response.headers();
 <p>Status: {{res}}</p>
 
 <p>Response Headers: {{headers}}</p>
-<table><th>{{res.Fname}}</th><th>{{Fa_name}}</th></table>
+<table><th>{{res.Fname}}</th><th>{{res.Fa_name}}</th></table>
 </div> 
 </body>
 </html>

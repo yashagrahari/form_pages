@@ -9,7 +9,7 @@
 AngularJs $http.post() Service Response Example
 
 </title>
-
+5
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <script type="text/javascript">
@@ -17,8 +17,6 @@ AngularJs $http.post() Service Response Example
 var app = angular.module('postserviceApp', []);
 
 app.controller('postserviceCtrl', function ($scope, $http) {
-
-$scope.Fname = null;
 
 $scope.Fname = null;
 
@@ -62,6 +60,7 @@ $http.post('http://10.21.66.154:8000/data/', JSON.stringify(data)).then(function
 if (response.data)
 
 $scope.msg = "Post Data Submitted Successfully!";
+$scope.response
 
 }, function (response) {
 
